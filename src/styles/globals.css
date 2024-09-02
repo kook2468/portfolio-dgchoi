@@ -2,10 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Montserrat";
+  src: url(../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf);
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --font-montserrat: "Montserrat";
 }
 
 @media (prefers-color-scheme: dark) {
@@ -41,7 +47,7 @@ footer {
 @keyframes fadeInUp {
   0% {
     opacity: 0;
-    transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 20%, 0);
   }
   to {
     opacity: 1;
@@ -49,7 +55,63 @@ footer {
   }
 }
 
+.title {
+  font-family: var(--font-montserrat);
+}
+
 .card-active > .card-container {
   position: relative;
   animation: fadeInUp 1s;
+}
+
+.wavy-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.wavy-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px; /* 텍스트와 밑줄 간격 */
+  height: 20px; /* 물결 높이 */
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="20" viewBox="0 0 40 20"><path d="M0 10 Q 10 20 20 10 T 40 10" fill="transparent" stroke="rgba(255, 182, 193, 0.8)" stroke-width="8" stroke-linecap="round"/></svg>');
+  background-repeat: repeat-x;
+  background-size: 40px 20px; /* 물결 패턴 크기 */
+  z-index: -1;
+  pointer-events: none;
+}
+
+.card-title {
+  position: relative;
+  right: 30px;
+  width: fit-content;
+  padding: 0 10px;
+  bottom: 30px;
+  border-bottom-right-radius: 10px;
+  margin: 0 -25px;
+  font-size: 40px;
+  background: pink;
+  color: #fff !important;
+  text-shadow: 1px 1px 0px #eee;
+  box-shadow: 0 5px 10px #eee;
+}
+
+.card-title:before {
+  color: #fff;
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -25px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: rgb(202, 151, 160) transparent;
+  border-width: 25px 0 0 25px;
+  left: 0;
+}
+
+.highlight.two-highlight {
+  background: linear-gradient(to right, pink 0%, #c2a4ff 100%);
 }

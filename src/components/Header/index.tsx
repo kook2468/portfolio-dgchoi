@@ -37,7 +37,6 @@ const Header = () => {
   };
 
   const handleLinkClick = () => {
-    console.log("링크클릭햇섬~~~");
     setClickedLink(true); // Link 클릭 시 상태를 true로 설정
   };
 
